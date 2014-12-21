@@ -1,5 +1,5 @@
 require_relative '../../lib/vida/game'
 
-describe Game do
+describe Vida::Game do
 
 end
