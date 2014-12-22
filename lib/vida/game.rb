@@ -12,4 +12,8 @@ class Vida::Game
       puts grid
     end
   end
+
+  def next_generation
+    puts "Calculating the next generation"
+  end
 end

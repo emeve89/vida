@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require 'vida'
+
+Vida::Game.new(Vida::Grid.new).play
