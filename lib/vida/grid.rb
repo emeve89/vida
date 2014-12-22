@@ -9,6 +9,7 @@ class Vida::Grid
         Vida::Cell.new(x: column, y: row, alive: random_status)
       end
     end
+    @generation_number = 0
   end
 
   def live_cells_around(cell)
@@ -32,6 +33,7 @@ class Vida::Grid
         element.update_status(live_cells_around(element))
       end
     end
+    @generation_number += 1
   end
 
   private
@@ -43,6 +45,7 @@ class Vida::Grid
       end
       print "\n"
     end
+    puts "Generation: #{@generation_number}"
   end
 
   def north(cell)

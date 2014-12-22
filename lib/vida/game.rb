@@ -10,6 +10,7 @@ class Vida::Game
       next_generation
       system('clear')
       puts grid
+      sleep(0.05)
     end
   end
 
