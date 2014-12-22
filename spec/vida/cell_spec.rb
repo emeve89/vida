@@ -20,4 +20,35 @@ describe Vida::Cell do
       expect(cell.alive).to eq false
     end
   end
+  describe "#update_status" do
+    context "with a living cell" do
+      c = Vida::Cell.new(x: 5, y: 5, alive: true)
+      it "sets alive to true if argument is 2 or 3" do
+        expect(c.update_status(2)).to eq true
+      end
+      it "sets alive to false if arguments is not 2 or 3" do
+        expect(c.update_status(1)).to eq false
+      end
+    end
+    context "with a dead cell" do
+      c = Vida::Cell.new(x: 5, y: 5, alive: false)
+      it "sets aliva to true if argument is 3" do
+        expect(c.update_status(3)).to eq true
+      end
+      it "sets alive to false if argument is not 3" do
+        expect(c.update_status(1)).to eq false
+      end
+    end
+  end
+
+  describe "#to_s" do
+    it "returns 'o' if the cell is alive" do
+      c = Vida::Cell.new(x: 5, y:5, alive: true)
+      expect(c.to_s).to eq "o"
+    end
+    it "returns ' ' if the cell is dead" do
+      c = Vida::Cell.new(x: 5, y:5, alive: false)
+      expect(c.to_s).to eq " "
+    end
+  end
 end
