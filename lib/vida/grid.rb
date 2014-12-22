@@ -6,8 +6,14 @@ class Vida::Grid
     @columns    = args.fetch(:columns, 50)
     @elements   = Array.new(rows) do |row|
       Array.new(columns) do |column|
-        Vida::Cell.new(x: column, y: row)
+        Vida::Cell.new(x: column, y: row, alive: random_status)
       end
     end
+  end
+
+  private
+
+  def random_status
+    [true, false].sample
   end
 end
