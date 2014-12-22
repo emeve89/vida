@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mario Viapiano"]
   spec.email         = ["marioeviapiano@gmail.com"]
   spec.summary       = "Game of Life"
-  spec.description   = "Game if Life - emeve89 edition"
+  spec.description   = "Game of Life - emeve89 edition"
   spec.homepage      = ""
   spec.license       = "MIT"
 
