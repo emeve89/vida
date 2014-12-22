@@ -11,7 +11,70 @@ class Vida::Grid
     end
   end
 
+  def live_cells_around(cell)
+    cells = []
+    cells << [
+      north(cell),
+      south(cell),
+      west(cell),
+      east(cell),
+      ul_corner(cell),
+      ur_corner(cell),
+      dl_corner(cell),
+      dr_corner(cell)
+    ]
+    cells.flatten!.count { |c| !c.nil? && c.alive == true }
+  end
+
   private
+
+  def north(cell)
+    if cell.y > 0
+      elements[cell.x][cell.y - 1]
+    end
+  end
+
+  def south(cell)
+    if cell.y < rows
+      elements[cell.x][cell.y + 1]
+    end
+  end
+
+  def west(cell)
+    if cell.x > 0
+      elements[cell.x - 1][cell.y]
+    end
+  end
+
+  def east(cell)
+    if cell.x < columns
+      elements[cell.x + 1][cell.y]
+    end
+  end
+
+  def ul_corner(cell)
+    if cell.x > 0 && cell.y > 0
+      elements[cell.x - 1][cell.y - 1]
+    end
+  end
+
+  def ur_corner(cell)
+    if cell.x < columns && cell.y > 0
+      elements[cell.x + 1][cell.y - 1]
+    end
+  end
+
+  def dl_corner(cell)
+    if cell.x > 0 && cell.y < rows
+      elements[cell.x - 1][cell.y + 1]
+    end
+  end
+
+  def dr_corner(cell)
+    if cell.x < columns && cell.y < rows
+      elements[cell.x + 1][cell.y + 1]
+    end
+  end
 
   def random_status
     [true, false].sample
