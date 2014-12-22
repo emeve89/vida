@@ -6,4 +6,12 @@ class Vida::Cell
     @x      = args.fetch(:x)
     @y      = args.fetch(:y)
   end
+
+  def update_status(live_cells_around)
+    @alive = alive ? (2..3) === live_cells_around : 3 == live_cells_around
+  end
+
+  def to_s
+    alive ? 'o' : ' '
+  end
 end

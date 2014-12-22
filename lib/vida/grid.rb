@@ -26,7 +26,24 @@ class Vida::Grid
     cells.flatten!.count { |c| !c.nil? && c.alive == true }
   end
 
+  def update_cells
+    elements.each do |column|
+      column.each do |element|
+        element.update_status(live_cells_around(element))
+      end
+    end
+  end
+
   private
+
+  def to_s
+    elements.each do |c|
+      c.each do |r|
+        print r
+      end
+      print "\n"
+    end
+  end
 
   def north(cell)
     if cell.y > 0
@@ -35,7 +52,7 @@ class Vida::Grid
   end
 
   def south(cell)
-    if cell.y < rows
+    if cell.y < (rows - 1)
       elements[cell.x][cell.y + 1]
     end
   end
@@ -47,7 +64,7 @@ class Vida::Grid
   end
 
   def east(cell)
-    if cell.x < columns
+    if cell.x < (columns - 1)
       elements[cell.x + 1][cell.y]
     end
   end
@@ -59,19 +76,19 @@ class Vida::Grid
   end
 
   def ur_corner(cell)
-    if cell.x < columns && cell.y > 0
+    if cell.x < (columns - 1) && cell.y > 0
       elements[cell.x + 1][cell.y - 1]
     end
   end
 
   def dl_corner(cell)
-    if cell.x > 0 && cell.y < rows
+    if cell.x > 0 && cell.y < (rows - 1)
       elements[cell.x - 1][cell.y + 1]
     end
   end
 
   def dr_corner(cell)
-    if cell.x < columns && cell.y < rows
+    if cell.x < (columns - 1) && cell.y < (rows - 1)
       elements[cell.x + 1][cell.y + 1]
     end
   end

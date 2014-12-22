@@ -14,6 +14,6 @@ class Vida::Game
   end
 
   def next_generation
-    puts "Calculating the next generation"
+    grid.update_cells
   end
 end
