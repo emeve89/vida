@@ -25,8 +25,8 @@ describe Vida::Grid do
         [Vida::Cell.new(x: 2, y: 0, alive: true), Vida::Cell.new(x: 2, y: 1, alive: false), Vida::Cell.new(x: 2, y: 2, alive: false)]
       ]
       grid.stub(:elements).and_return(stubbed_response)
-      grid.stub(:columns).and_return(2)
-      grid.stub(:rows).and_return(2)
+      grid.stub(:columns).and_return(3)
+      grid.stub(:rows).and_return(3)
 
       expect(grid.live_cells_around(grid.elements[0][0])).to eq 1
       expect(grid.live_cells_around(grid.elements[0][1])).to eq 1
